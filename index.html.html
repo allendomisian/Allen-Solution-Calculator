@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ALLEN SOLUTION CALCULATOR</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            background: #1a1a2e;
+        }
+
+        .calc {
+            background: #16213e;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.5);
+            width: 320px;
+            border: 2px solid #0f3460;
+        }
+
+        .title {
+            color: #e94560;
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        input {
+            width: 100%;
+            height: 60px;
+            font-size: 28px;
+            text-align: right;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            background: #0f3460;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #0f3460;
+            color: white;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #e94560;
+            transform: translateY(-2px);
+        }
+
+        .btn-clear {
+            background: #950740;
+        }
+
+        .btn-del {
+            background: #c3073f;
+        }
+
+        .btn-op {
+            background: #533483;
+        }
+
+        .equal {
+            background: #e94560;
+            grid-column: span 2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calc">
+        <div class="title">ALLEN SOLUTION</div>
+        <input type="text" id="screen" disabled>
+
+        <div class="buttons">
+            <button class="btn-clear" onclick="clearScreen()">C</button>
+            <button class="btn-del" onclick="backspace()">DEL</button>
+            <button class="btn-op" onclick="addToScreen('/')">/</button>
+            <button class="btn-op" onclick="addToScreen('*')">×</button>
+
+            <button onclick="addToScreen('7')">7</button>
+            <button onclick="addToScreen('8')">8</button>
+            <button onclick="addToScreen('9')">9</button>
+            <button class="btn-op" onclick="addToScreen('-')">-</button>
+
+            <button onclick="addToScreen('4')">4</button>
+            <button onclick="addToScreen('5')">5</button>
+            <button onclick="addToScreen('6')">6</button>
+            <button class="btn-op" onclick="addToScreen('+')">+</button>
+
+            <button onclick="addToScreen('1')">1</button>
+            <button onclick="addToScreen('2')">2</button>
+            <button onclick="addToScreen('3')">3</button>
+            <button onclick="addToScreen('.')">.</button>
+
+            <button onclick="addToScreen('0')">0</button>
+            <button class="equal" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let screen = document.getElementById('screen');
+
+        function addToScreen(value) {
+            screen.value += value;
+        }
+
+        function clearScreen() {
+            screen.value = '';
+        }
+
+        function backspace() {
+            screen.value = screen.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                if (screen.value != "") {
+                    screen.value = eval(screen.value);
+                }
+            } catch (e) {
+                screen.value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
